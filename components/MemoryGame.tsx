@@ -13,14 +13,14 @@ const generateDeck = () => {
     "Unicorn_006",
     "Unicorn_007",
     "Unicorn_008",
-    // "Unicorn_009",
-    // "Unicorn_010",
-    // "Unicorn_011",
-    // "Unicorn_012",
-    // "Unicorn_013",
-    // "Unicorn_014",
-    // "Unicorn_015",
-    // "Unicorn_016",
+    "Unicorn_009",
+    "Unicorn_010",
+    "Unicorn_011",
+    "Unicorn_012",
+    "Unicorn_013",
+    "Unicorn_014",
+    "Unicorn_015",
+    "Unicorn_016",
   ];
   const deck = [...memoryCards, ...memoryCards];
   return deck.sort(() => Math.random() - 0.5);
@@ -67,7 +67,7 @@ export default function MemoryGame() {
       {gameOver && (
         <h2 className="p-5 font-bold text-4xl text-green-500">You Won!</h2>
       )}
-      <div className="grid grid-cols-4 gap-4 mt-5">
+      <div className="grid grid-cols-8 gap-4 mt-5">
         {cards.map((card, index) => (
           <div
             key={index}
