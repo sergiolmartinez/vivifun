@@ -3,8 +3,7 @@
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>Home</div>
-      {/* <MemoryGame /> */}
+      <div className="text-3xl">Welcome to Vivi Fun!</div>
     </main>
   );
 }
