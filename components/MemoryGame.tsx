@@ -28,7 +28,7 @@ export default function MemoryGame() {
   const [cards, setCards] = useState<string[]>([]);
   const [flipped, setFlipped] = useState<number[]>([]);
   const [matched, setMatched] = useState<number[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   const loadDeck = async (
@@ -125,7 +125,7 @@ export default function MemoryGame() {
           <FaDragon className="size-10" />
         </button>
         <button
-          onClick={resetGame}
+          onClick={() => resetGame(category, gameSize)}
           className="px-5 py-2 rounded-full text-red-500 font-bold "
         >
           <VscDebugRestart className="size-10" />
