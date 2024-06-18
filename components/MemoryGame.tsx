@@ -119,21 +119,7 @@ export default function MemoryGame() {
           <VscDebugRestart className="size-10" />
         </button>
       </div>
-      {/* <div className="mb-5">
-        <label htmlFor="gameSize" className="font-bold mr-2">
-          Select Game Size:
-        </label>
-        <select
-          id="gameSize"
-          value={gameSize}
-          onChange={(e) => setGameSize(Number(e.target.value))}
-          className="p-2 border rounded text-black"
-        >
-          <option value={4}>4x4</option>
-          <option value={5}>5x5</option>
-          <option value={6}>6x6</option>
-        </select>
-      </div> */}
+
       {loading ? (
         <div className="flex justify-center align-center mt-5">Loading...</div>
       ) : error ? (
@@ -182,12 +168,6 @@ export default function MemoryGame() {
               </div>
             ))}
           </div>
-          {/* <button
-            onClick={resetGame}
-            className="p-3 bg-red-500 rounded-full mt-5"
-          >
-            Reset Game
-          </button> */}
         </>
       )}
     </div>
