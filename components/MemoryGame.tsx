@@ -31,11 +31,14 @@ export default function MemoryGame() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  const loadDeck = async () => {
+  const loadDeck = async (
+    selectedCategory: string = category,
+    selectedGameSize: number = gameSize
+  ) => {
     setLoading(true);
     setError(null);
     try {
-      const newDeck = await generateDeck(category, gameSize);
+      const newDeck = await generateDeck(selectedCategory, selectedGameSize);
       setCards(newDeck);
     } catch (error) {
       setError("Failed to load images");
@@ -72,10 +75,19 @@ export default function MemoryGame() {
   };
 
   const gameOver = matched.length === cards.length && cards.length > 0;
-  const resetGame = async () => {
-    await loadDeck();
+
+  const resetGame = async (
+    selectedCategory: string = category,
+    selectedGameSize: number = gameSize
+  ) => {
+    await loadDeck(selectedCategory, selectedGameSize);
     setFlipped([]);
     setMatched([]);
+  };
+
+  const handleCategoryChange = (newCategory: string) => {
+    setCategory(newCategory);
+    resetGame(newCategory, gameSize);
   };
 
   return (
@@ -88,7 +100,7 @@ export default function MemoryGame() {
               ? "bg-gray-900 border-solid border-2 border-gray-100"
               : "bg-gray-600 hover:bg-gray-400"
           }`}
-          onClick={() => setCategory("unicorns")}
+          onClick={() => handleCategoryChange("unicorns")}
         >
           <GiUnicorn className="size-10" />
         </button>
@@ -98,7 +110,7 @@ export default function MemoryGame() {
               ? "bg-gray-900 border-solid border-2 border-gray-100"
               : "bg-gray-600 hover:bg-gray-400"
           }`}
-          onClick={() => setCategory("princesses")}
+          onClick={() => handleCategoryChange("princesses")}
         >
           <FaCrown className="size-10" />
         </button>
@@ -108,7 +120,7 @@ export default function MemoryGame() {
               ? "bg-gray-900 border-solid border-2 border-gray-100"
               : "bg-gray-600 hover:bg-gray-400"
           }`}
-          onClick={() => setCategory("dragons")}
+          onClick={() => handleCategoryChange("dragons")}
         >
           <FaDragon className="size-10" />
         </button>
@@ -121,7 +133,24 @@ export default function MemoryGame() {
       </div>
 
       {loading ? (
-        <div className="flex justify-center align-center mt-5">Loading...</div>
+        // <div className="flex justify-center align-center mt-5">Loading...</div>
+        <div
+          className={`grid gap-4 mt-5`}
+          style={{
+            gridTemplateColumns: `repeat(${gameSize}, minmax(0, 1fr))`,
+          }}
+        >
+          {[...Array(gameSize * gameSize)].map((_, index) => (
+            <div
+              key={index}
+              className="card border border-blue-300 shadow rounded-md p-4 max-w-sm w-40 h-40 mx-auto"
+            >
+              <div className="card-inner animate-pulse flex space-x-4">
+                <div className="card-front rounded-full bg-slate-700"></div>
+              </div>
+            </div>
+          ))}
+        </div>
       ) : error ? (
         <p>Error: {error}</p>
       ) : (
