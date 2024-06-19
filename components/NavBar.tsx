@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import GirlIcon from "@/public/icons/girl_icon.webp"; // This is the image that will be used in the navbar
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -18,27 +20,39 @@ const Navbar = () => {
       name: "Memory Game",
       link: "memory-game",
     },
-    {
-      id: 3,
-      name: "Contact",
-      link: "contact",
-    },
+    // {
+    //   id: 3,
+    //   name: "Contact",
+    //   link: "contact",
+    // },
   ];
 
   return (
-    <div className="flex justify-between items-center w-full h-20 px-4 text-white bg-black fixed nav">
-      <div>
-        {/* <h1 className="text-5xl font-signature ml-2"><a className="link-underline hover:transition ease-in-out delay-150 hover:underline hover:decoration-solid" href="">Logo</a></h1> */}
-        <h1 className="text-5xl font-signature ml-2">
-          <a
-            className="link-underline link-underline-black"
-            href="/"
-            // target="_blank"
-            // rel="noreferrer"
-          >
+    <div className="flex justify-between items-center flex-wrap w-full h-20 p-4 text-white bg-black fixed nav">
+      <div className="flex items-center flex-shrink-0 text-white mr-6">
+        <a
+          href="/"
+          // target="_blank"
+          // rel="noreferrer"
+        >
+          <Image
+            className="rounded-full fill-current mr-2 bg-gray-200"
+            src={GirlIcon}
+            alt="Vivi Fun Logo"
+            width={75}
+            height={75}
+          />
+        </a>
+        <a
+          className="link-underline link-underline-black"
+          href="/"
+          // target="_blank"
+          // rel="noreferrer"
+        >
+          <span className="font-semibold text-2xl tracking-tight">
             Vivi Fun
-          </a>
-        </h1>
+          </span>
+        </a>
       </div>
 
       <ul className="hidden md:flex">

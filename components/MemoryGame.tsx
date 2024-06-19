@@ -3,9 +3,10 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ImageFilesResponse } from "./types";
-import { FaStar, FaDragon, FaCrown } from "react-icons/fa";
+import Unicorn from "@/public/icons/unicorn_icon.webp";
+import Princess from "@/public/icons/princess_icon.webp";
+import Dragon from "@/public/icons/dragon_icon.webp";
 import { VscDebugRestart } from "react-icons/vsc";
-import { GiUnicorn } from "react-icons/gi";
 
 const generateDeck = async (
   category: string,
@@ -26,6 +27,7 @@ export default function MemoryGame() {
   const [category, setCategory] = useState<string>("unicorns");
   const [gameSize, setGameSize] = useState<number>(4); // Default to 4x4
   const [cards, setCards] = useState<string[]>([]);
+  const [cardBack, setCardBack] = useState("Unicorn");
   const [flipped, setFlipped] = useState<number[]>([]);
   const [matched, setMatched] = useState<number[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -40,6 +42,13 @@ export default function MemoryGame() {
     try {
       const newDeck = await generateDeck(selectedCategory, selectedGameSize);
       setCards(newDeck);
+      if (selectedCategory === "unicorns") {
+        setCardBack("Unicorn");
+      } else if (selectedCategory === "princesses") {
+        setCardBack("Princess");
+      } else if (selectedCategory === "dragons") {
+        setCardBack("Dragon");
+      }
     } catch (error) {
       setError("Failed to load images");
     } finally {
@@ -93,47 +102,68 @@ export default function MemoryGame() {
   return (
     <div className="text-center p-5">
       <h1 className="text-4xl font-bold mb-5">Memory Game</h1>
-      <div className="flex flex-row justify-center space-x-4 mb-5">
-        <button
-          className={`px-5 py-5 rounded-full text-white font-bold transition-colors duration-300 ${
-            category === "unicorns"
-              ? "bg-gray-900 border-solid border-2 border-gray-100"
-              : "bg-gray-600 hover:bg-gray-400"
-          }`}
-          onClick={() => handleCategoryChange("unicorns")}
-        >
-          <GiUnicorn className="size-10" />
-        </button>
-        <button
-          className={`px-5 py-2 rounded-full text-white font-bold transition-colors duration-300 ${
-            category === "princesses"
-              ? "bg-gray-900 border-solid border-2 border-gray-100"
-              : "bg-gray-600 hover:bg-gray-400"
-          }`}
-          onClick={() => handleCategoryChange("princesses")}
-        >
-          <FaCrown className="size-10" />
-        </button>
-        <button
-          className={`px-5 py-2 rounded-full text-white font-bold transition-colors duration-300 ${
-            category === "dragons"
-              ? "bg-gray-900 border-solid border-2 border-gray-100"
-              : "bg-gray-600 hover:bg-gray-400"
-          }`}
-          onClick={() => handleCategoryChange("dragons")}
-        >
-          <FaDragon className="size-10" />
-        </button>
-        <button
-          onClick={() => resetGame(category, gameSize)}
-          className="px-5 py-2 rounded-full text-red-500 font-bold "
-        >
-          <VscDebugRestart className="size-10" />
-        </button>
+      {/* Game Buttons to select categories and reset the game */}
+      <div className=" justify-center items-center grid grid-cols-6 gap-4">
+        <div className=""></div>
+        <div className="space-x-4 col-start-2 col-span-4">
+          <button
+            className={`rounded-full text-white font-bold transition-colors duration-300 ${
+              category === "unicorns"
+                ? "bg-gray-200 border-solid border-2 border-gray-400"
+                : "bg-gray-400 hover:bg-gray-200"
+            }`}
+            onClick={() => handleCategoryChange("unicorns")}
+          >
+            <Image
+              className=""
+              src={Unicorn}
+              alt="Unicorn"
+              width={65}
+              height={65}
+            />
+          </button>
+          <button
+            className={`rounded-full text-white font-bold transition-colors duration-300 ${
+              category === "princesses"
+                ? "bg-gray-100 border-solid border-2 border-gray-400"
+                : "bg-gray-400 hover:bg-gray-200"
+            }`}
+            onClick={() => handleCategoryChange("princesses")}
+          >
+            <Image
+              className=""
+              src={Princess}
+              alt="Princess"
+              width={65}
+              height={65}
+            />
+          </button>
+          <button
+            className={`rounded-full text-white font-bold transition-colors duration-300 ${
+              category === "dragons"
+                ? "bg-gray-100 border-solid border-2 border-gray-400"
+                : "bg-gray-400 hover:bg-gray-200"
+            }`}
+            onClick={() => handleCategoryChange("dragons")}
+          >
+            <Image
+              className=""
+              src={Dragon}
+              alt="Dragon"
+              width={65}
+              height={65}
+            />
+          </button>
+        </div>
+        <div className="col-end-7 col-span-1">
+          <VscDebugRestart
+            className=" fill-red-500 size-10 hover:cursor-pointer"
+            onClick={() => resetGame(category, gameSize)}
+          />
+        </div>
       </div>
-
+      {/* Loading animation */}
       {loading ? (
-        // <div className="flex justify-center align-center mt-5">Loading...</div>
         <div
           className={`grid gap-4 mt-5`}
           style={{
@@ -143,7 +173,7 @@ export default function MemoryGame() {
           {[...Array(gameSize * gameSize)].map((_, index) => (
             <div
               key={index}
-              className="card border border-blue-300 shadow rounded-md p-4 max-w-sm w-40 h-40 mx-auto"
+              className="card border border-blue-300 shadow rounded-md p-4 max-w-sm w-32 h-32 mx-auto"
             >
               <div className="card-inner animate-pulse flex space-x-4">
                 <div className="card-front rounded-full bg-slate-700"></div>
@@ -152,22 +182,26 @@ export default function MemoryGame() {
           ))}
         </div>
       ) : error ? (
+        // Error message
         <p>Error: {error}</p>
       ) : (
         <>
+          {/* What happens when you win, currently just text, later animations */}
           {gameOver && (
             <h2 className="p-5 font-bold text-4xl text-green-500">You Won!</h2>
           )}
+          {/* Setting up grid size based on gameSize (default is a 4x4 matrix) but currently hard coded, later add selections */}
           <div
             className={`grid gap-4 mt-5`}
             style={{
               gridTemplateColumns: `repeat(${gameSize}, minmax(0, 1fr))`,
             }}
           >
+            {/* Map all the cards based on the game size and the game deck */}
             {cards.map((card, index) => (
               <div
                 key={index}
-                className={`card w-40 h-40 flex items-center justify-center text-4xl font-bold text-black transform cursor-pointer hover:scale-105 transition-transform duration-300 ${
+                className={`card w-32 h-32 flex items-center justify-center text-4xl font-bold text-black transform cursor-pointer hover:scale-105 transition-transform duration-300 ${
                   flipped.includes(index) || matched.includes(index)
                     ? "flipped"
                     : ""
@@ -180,11 +214,31 @@ export default function MemoryGame() {
                 }}
                 onClick={() => handleClick(index)}
               >
-                <div className="card-inner">
-                  <div className="card-front bg-pink-300 flex items-center justify-center">
-                    <FaStar className="size-20" />
+                <div className="card-back">
+                  <div
+                    className={`card-front ${
+                      cardBack === "Unicorn"
+                        ? "bg-indigo-300 "
+                        : cardBack === "Princess"
+                        ? "bg-pink-300"
+                        : "bg-teal-300"
+                    } flex items-center justify-center rounded-lg shadow-md shadow-gray-500 `}
+                  >
+                    <Image
+                      className=""
+                      src={
+                        cardBack === "Unicorn"
+                          ? Unicorn
+                          : cardBack === "Princess"
+                          ? Princess
+                          : Dragon
+                      }
+                      alt={cardBack}
+                      width={200}
+                      height={200}
+                    />
                   </div>
-                  <div className="card-back flex items-center justify-center">
+                  <div className="card-inner flex items-center justify-center rounded-lg shadow-md shadow-gray-500">
                     <Image
                       className=""
                       src={`/memory-cards/${category}/${card}`}
