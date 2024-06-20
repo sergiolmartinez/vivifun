@@ -183,7 +183,7 @@ export default function MemoryGame() {
         </div>
       ) : error ? (
         // Error message
-        <p>Error: {error}</p>
+        <p className="pt-5 text-center items-center">Error: {error}</p>
       ) : (
         <>
           {/* What happens when you win, currently just text, later animations */}
