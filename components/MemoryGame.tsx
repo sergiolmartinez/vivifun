@@ -3,9 +3,9 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ImageFilesResponse } from "./types";
-import Unicorn from "@/public/icons/unicorn_icon.webp";
-import Princess from "@/public/icons/princess_icon.webp";
-import Dragon from "@/public/icons/dragon_icon.webp";
+import Unicorn from "@/assets/icons/unicorn_icon.webp";
+import Princess from "@/assets/icons/princess_icon.webp";
+import Dragon from "@/assets/icons/dragon_icon.webp";
 import { VscDebugRestart } from "react-icons/vsc";
 
 const generateDeck = async (

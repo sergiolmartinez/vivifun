@@ -13,7 +13,7 @@ export async function GET(request: Request) {
 
   const directoryPath = path.join(
     process.cwd(),
-    `public/memory-cards/${category}`
+    `assets/memory-cards/${category}`
   );
 
   try {
@@ -27,5 +27,3 @@ export async function GET(request: Request) {
     );
   }
 }
-
-export const dynamic = "force-static";
