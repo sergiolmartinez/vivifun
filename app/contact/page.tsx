@@ -19,7 +19,7 @@ export default function Contact() {
         <div className="flex flex-row">
           <div className="w-1/2 pr-2 ">
             <label
-              for="firstName"
+              htmlFor="firstName"
               className="block my-2 text-left 
 										text-sm font-medium text-gray-900"
             >
@@ -36,7 +36,7 @@ export default function Contact() {
           </div>
           <div className="w-1/2 pl-2">
             <label
-              for="firstName"
+              htmlFor="firstName"
               className="block my-2 text-left text-sm 
 										font-medium text-gray-900"
             >
@@ -53,7 +53,7 @@ export default function Contact() {
         </div>
         <div>
           <label
-            for="email"
+            htmlFor="email"
             className="block my-2 text-left text-sm 
 									font-medium text-gray-900"
           >
@@ -70,7 +70,7 @@ export default function Contact() {
         </div>
         <div>
           <label
-            for="subject"
+            htmlFor="subject"
             className="block my-2 text-left 
 									text-sm font-medium text-gray-900"
           >
@@ -87,17 +87,17 @@ export default function Contact() {
         </div>
         <div>
           <label
-            for="message"
+            htmlFor="message"
             className="block my-2 text-left 
 									text-sm font-medium text-gray-900 "
           >
             Your message
           </label>
           <textarea
-            rows="6"
+            rows={6}
             className="block p-2.5 w-full text-sm 
-										text-gray-900 bg-gray-50 rounded-lg 
-										shadow-sm border border-gray-300 "
+                        text-gray-900 bg-gray-50 rounded-lg 
+                        shadow-sm border border-gray-300 "
             placeholder="Your message..."
           />
         </div>

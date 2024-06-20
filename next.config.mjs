@@ -1,8 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  basePath: "/vivifun",
-  output: "export",
-  reactStrictMode: true,
-};
+const nextConfig = {};
 
-module.exports = nextConfig;
+export default nextConfig;
