@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import GirlIcon from "@/assets/icons/girl_icon.webp"; // This is the image that will be used in the navbar
+import GirlIcon from "@/public/icons/girl_icon.webp"; // This is the image that will be used in the navbar
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
