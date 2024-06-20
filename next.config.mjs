@@ -4,6 +4,10 @@ const nextConfig = {
   // images: {
   //   unoptimized: true,
   // },
+  images: {
+    loader: "akamai",
+    path: "/",
+  },
 };
 
 export default nextConfig;
