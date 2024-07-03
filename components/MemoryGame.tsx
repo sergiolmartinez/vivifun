@@ -14,10 +14,13 @@ const generateDeck = async (
 ): Promise<string[]> => {
   const res = await fetch(`/api/images?category=${category}`);
   const imageFiles: ImageFilesResponse = await res.json();
+  const validImageFiles = imageFiles.filter((url) =>
+    url.match(/\.(jpeg|jpg|gif|png|webp)$/)
+  );
 
   // Calculate the number of unique cards needed
   const numPairs = (size * size) / 2;
-  const selectedImages = imageFiles.slice(0, numPairs);
+  const selectedImages = validImageFiles.slice(0, numPairs);
 
   const deck = [...selectedImages, ...selectedImages];
   return deck.sort(() => Math.random() - 0.5);
@@ -241,7 +244,7 @@ export default function MemoryGame() {
                   <div className="card-inner flex items-center justify-center rounded-lg shadow-md shadow-gray-500">
                     <Image
                       className=""
-                      src={`/memory-cards/${category}/${card}`}
+                      src={`${card}`}
                       alt={card}
                       width={200}
                       height={200}
