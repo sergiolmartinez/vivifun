@@ -5,13 +5,13 @@ import Dragon from "@/assets/icons/dragon_icon.webp";
 
 interface Category {
   name: string;
-  icon: StaticImageData;
+  icon: string;
 }
 
 const categories: Category[] = [
-  { name: "unicorns", icon: Unicorn },
-  { name: "princesses", icon: Princess },
-  { name: "dragons", icon: Dragon },
+  { name: "unicorns", icon: Unicorn.src },
+  { name: "princesses", icon: Princess.src },
+  { name: "dragons", icon: Dragon.src },
 ];
 
 interface CategorySelectorProps {
