@@ -84,9 +84,9 @@ export default function MemoryGame() {
   };
 
   return (
-    <div className="text-center p-5">
+    <div className="text-center p-5 mt-20">
       <h1 className="text-4xl font-bold mb-5">Memory Game</h1>
-      <div className="justify-center items-center grid grid-cols-6 gap-4">
+      <div className=" justify-center items-center grid grid-cols-6 gap-4">
         <CategorySelector
           category={category}
           onCategoryChange={handleCategoryChange}

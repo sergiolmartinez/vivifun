@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import GirlIcon from "@/assets/icons/girl_icon.webp"; // This is the image that will be used in the navbar
+import GirlIcon from "@/assets/icons/girl_icon.webp";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -20,21 +20,12 @@ const Navbar = () => {
       name: "Memory Game",
       link: "memory-game",
     },
-    // {
-    //   id: 3,
-    //   name: "Contact",
-    //   link: "contact",
-    // },
   ];
 
   return (
-    <div className="flex justify-between items-center flex-wrap w-full h-20 p-4 text-white bg-black fixed nav">
+    <div className="flex justify-between items-center flex-wrap w-full h-20 p-4 text-white bg-black fixed top-0 left-0 z-50">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
-        <a
-          href="/"
-          // target="_blank"
-          // rel="noreferrer"
-        >
+        <a href="/">
           <Image
             className="rounded-full fill-current mr-2 bg-gray-200"
             src={GirlIcon}
@@ -43,12 +34,7 @@ const Navbar = () => {
             height={75}
           />
         </a>
-        <a
-          className="link-underline link-underline-black"
-          href="/"
-          // target="_blank"
-          // rel="noreferrer"
-        >
+        <a className="link-underline link-underline-black" href="/">
           <span className="font-semibold text-2xl tracking-tight">
             Vivi Fun
           </span>
