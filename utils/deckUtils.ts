@@ -1,4 +1,4 @@
-import { ImageFilesResponse } from "@/types";
+import { ImageFilesResponse } from "../types";
 
 const CACHE_EXPIRY_MS = 24 * 60 * 60 * 1000; // 24 hours
 
