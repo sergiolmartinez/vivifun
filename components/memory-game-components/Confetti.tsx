@@ -8,7 +8,7 @@ interface ConfettiProps {
 const Confetti: React.FC<ConfettiProps> = ({ active }) => {
   useEffect(() => {
     if (active) {
-      const duration = 3 * 1000;
+      const duration = 5 * 1000;
       const end = Date.now() + duration;
 
       const colors = ["#bb0000", "#ffffff"];
