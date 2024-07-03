@@ -7,7 +7,7 @@ const s3 = new AWS.S3({
   region: process.env.AWS_REGION,
 });
 
-const AWS_BUCKET_NAME = process.env.AWS_BUCKET_NAME;
+const AWS_BUCKET_NAME = process.env.AWS_BUCKET_NAME as string;
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
