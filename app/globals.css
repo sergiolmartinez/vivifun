@@ -25,6 +25,14 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+h1 {
+  margin: 0;
+  padding: 20px 0;
+  text-align: center;
+}
+.main {
+  padding-top: 80px; /* Ensure content is not hidden behind fixed navbar */
+}
 
 @layer utilities {
   .text-balance {

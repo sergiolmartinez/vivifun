@@ -20,6 +20,11 @@ const Navbar = () => {
       name: "Memory Game",
       link: "memory-game",
     },
+    {
+      id: 3,
+      name: "Bubble Pop Game",
+      link: "bubble-pop",
+    },
   ];
 
   return (
