@@ -133,15 +133,13 @@ const BubblePopGame: React.FC = () => {
           className={`text-4xl text-green-500 cursor-pointer ${
             running ? "opacity-50 cursor-not-allowed" : ""
           }`}
-          onClick={startGame}
-          disabled={running}
+          onClick={!running ? startGame : undefined}
         />
         <FaStop
           className={`text-4xl text-red-500 cursor-pointer ${
             !running ? "opacity-50 cursor-not-allowed" : ""
           }`}
-          onClick={stopGame}
-          disabled={!running}
+          onClick={running ? stopGame : undefined}
         />
       </div>
     </div>
