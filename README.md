@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Vivi Fun
 
-## Getting Started
+Vivi Fun is a delightful website featuring a variety of games designed for children. Our goal is to provide fun and educational activities that keep kids entertained. New games will be added over time to expand the collection.
 
-First, run the development server:
+## Table of Contents
 
-```bash
+- [Introduction](#introduction)
+- [Features](#features)
+- [Demo](#demo)
+- [Installation](#installation)
+- [Environment Variables](#environment-variables)
+- [Usage](#usage)
+- [Deployment](#deployment)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+Vivi Fun is a platform where children can play a variety of games. The site is designed to be visually appealing and easy to navigate for young users. The first two games available are:
+
+1. **Memory Game**: A classic game where players flip cards to find matching pairs.
+2. **Bubble Pop Game**: An interactive game where players pop bubbles that appear on the screen.
+
+The site is deployed on Vercel and can be accessed at [www.vivifun.com](https://www.vivifun.com).
+
+## Features
+
+- **Memory Game**: Match pairs of cards to win.
+- **Bubble Pop Game**: Pop colorful bubbles for fun animations and points.
+- Regular updates with new games.
+- Child-friendly design and interface.
+
+## Demo
+
+Check out the live demo of Vivi Fun [here](https://www.vivifun.com).
+
+## Installation
+
+To set up the project locally, follow these steps:
+
+1. **Clone the repository**
+
+   ```sh
+   git clone https://github.com/your-username/vivi-fun.git
+   cd vivi-fun
+   ```
+
+2. **Install dependencies**
+
+   ```sh
+   npm install
+   ```
+
+3. **Set up environment variables**
+
+   Create a `.env.development.local` file in the root of the project with the following content:
+
+   ```plaintext
+   # AWS S3
+   AWS_ACCESS_KEY_ID=
+   AWS_SECRET_ACCESS_KEY=
+   AWS_REGION=
+   AWS_BUCKET_NAME=
+   ```
+
+   Replace the placeholders with your actual AWS credentials and bucket information.
+
+## Usage
+
+To start the development server and play the game locally, run:
+
+```sh
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and navigate to `http://localhost:3000` to see the Vivi Fun website in action.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Vivi Fun is deployed on Vercel. To deploy your own version:
 
-## Learn More
+1. **Push your changes to a GitHub repository.**
+2. **Sign in to [Vercel](https://vercel.com/) and create a new project.**
+3. **Connect your GitHub repository to Vercel.**
+4. **Set up your environment variables in the Vercel dashboard.**
+5. **Deploy the project.**
 
-To learn more about Next.js, take a look at the following resources:
+## Technologies Used
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Next.js**: A React framework for server-rendered applications.
+- **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+- **React Icons**: Popular icons as React components.
+- **canvas-confetti**: Confetti animations using the canvas element.
+- **AWS S3**: For storing and accessing game assets.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
+Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
